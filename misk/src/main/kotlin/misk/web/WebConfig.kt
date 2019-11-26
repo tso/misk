@@ -39,7 +39,10 @@ data class WebConfig(
 
   /** A value in [0.0..100.0]. Include 'Connection: close' in this percentage of responses. */
   // TODO(jayestrella): Add a sane default value to this.
-  val close_connection_percent: Double = 0.0
+  val close_connection_percent: Double = 0.0,
+
+  /** This string will set as the value to the Access-Control-Allow-Origin header */
+  val cors_allowed_origins: String = "*"
 ) : Config
 
 data class WebSslConfig(

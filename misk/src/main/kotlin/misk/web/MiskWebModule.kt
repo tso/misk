@@ -38,6 +38,7 @@ import misk.web.interceptors.RequestLogContextInterceptor
 import misk.web.interceptors.RequestBodyLoggingInterceptor
 import misk.web.interceptors.RequestLoggingInterceptor
 import misk.web.interceptors.TracingInterceptor
+import misk.web.interceptors.CorsInterceptor
 import misk.web.jetty.JettyConnectionMetricsCollector
 import misk.web.jetty.JettyService
 import misk.web.jetty.JettyThreadPoolMetricsCollector
@@ -117,6 +118,9 @@ class MiskWebModule(private val config: WebConfig) : KAbstractModule() {
     // Optionally log request and response details
     multibind<NetworkInterceptor.Factory>(MiskDefault::class)
         .to<RequestLoggingInterceptor.Factory>()
+
+    multibind<NetworkInterceptor.Factory>(MiskDefault::class)
+        .to<CorsInterceptor.Factory>()
 
     // Optionally log request and response body
     multibind<ApplicationInterceptor.Factory>(MiskDefault::class)
